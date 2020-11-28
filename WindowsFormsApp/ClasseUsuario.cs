@@ -14,13 +14,13 @@ namespace WindowsFormsApp {
         public string Senha { get => senha; set => senha = value; }
         
 
-        // Construtor com parametros
+        
         public ClasseUsuario(string email, string senha) {
             Email = email;
             Senha = senha;
         }
 
-        // Construtor vazio
+        
         public ClasseUsuario() {
 
         }
