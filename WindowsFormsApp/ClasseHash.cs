@@ -51,16 +51,7 @@ namespace WindowsFormsApp
             return sb.ToString() == senhaCadastrada;
         }
 
-        public bool VerificarEmail(string EmailDigitado, string EmailCadastrado)
-        {
-
-            if (EmailDigitado == EmailCadastrado)
-            {
-              
-            }
-
-            return true;
-        }
+        
     }
 }
 
