@@ -17,22 +17,24 @@ namespace WindowsFormsApp
             InitializeComponent();
         }
         
-        
-
-        private void SairToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void agendaToolStripMenuItem_Click(object sender, EventArgs e) {
-            CadastroeLogin agendaObj = new CadastroeLogin();
-            agendaObj.ShowDialog();
-          
-        }
+       
 
         private void Principal_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CadastroeLogin FormCadastroeLogin = new CadastroeLogin();
+            FormCadastroeLogin.Show();
+
+            this.Hide();
+        }
+
+        private void btFinalizar_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
