@@ -17,9 +17,25 @@ namespace WindowsFormsApp
             InitializeComponent();
         }
 
-        private void ContaLogado_Load(object sender, EventArgs e)
-        {
+       
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            CadastroeLogin FormCadastroeLogin = new CadastroeLogin();
+            FormCadastroeLogin.Show();
+            this.Close();
+        }
+
+        private void btFechar_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btMenuPrincipal_Click(object sender, EventArgs e)
+        {
+            Principal FormPrincipal = new Principal();
+            FormPrincipal.Show();
+            this.Hide();
         }
     }
 }
