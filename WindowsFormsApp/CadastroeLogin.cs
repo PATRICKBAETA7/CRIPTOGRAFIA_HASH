@@ -20,29 +20,12 @@ namespace WindowsFormsApp {
             
         }
 
+        
+
         List<ClasseUsuario> ListaUsuarios = new List<ClasseUsuario>();
 
         
-        private void Agenda_Load(object sender, EventArgs e) {
-
-            //Método do projeto do período passado 2020/1. Tentei remover, 
-            //mas dá erro no Form. Como quanto mais se mexe mais dá problema eu deixei quieto. kkkkkkkkkk
-            
-        }
-
-        private void tbSenha_Leave(object sender, EventArgs e) {
-            //Método do projeto do text box que excluí. Tentei remover, 
-            //mas dá erro no Form. Como quanto mais se mexe mais dá problema eu deixei quieto. kkkkkkkkkk
-
-        }
-
-
-
-        private void tbEmail_Leave(object sender, EventArgs e) {
-            //Método do projeto do text box que excluí. Tentei remover, 
-            //mas dá erro no Form. Como quanto mais se mexe mais dá problema eu deixei quieto. kkkkkkkkkk
-        }
-
+       
 
 
         private void btCadastrar_Click(object sender, EventArgs e)
@@ -75,47 +58,67 @@ namespace WindowsFormsApp {
 
         private void btLogin_Click(object sender, EventArgs e)
         {
-            bool VerificaSenha;
-            bool VerificaEmail;
+            
 
+            
             List<ClasseUsuario> UsuariosRegistros = ManipulaLogin.Manipulacao.SelecionarRegistros();
-            ContaLogado FormLogado = new ContaLogado();
-            CadastroeLogin FormCadastroLogin = new CadastroeLogin();
+            
+            
 
             for (int contador = 0; contador < UsuariosRegistros.Count; contador++)
             {
-
+                bool VerificaSenha;
+                bool VerificaEmail;
                 ClasseHash hash = new ClasseHash(SHA512.Create());
                 
                 VerificaSenha = hash.VerificarSenha(tbSenhaDigitada.Text, UsuariosRegistros[contador].Senha);
-                VerificaEmail = hash.VerificarEmail(tbEmail.Text,UsuariosRegistros[contador].Email);
-
+                
+                if(tbEmail.Text == UsuariosRegistros[contador].Email)
+                {
+                    VerificaEmail = true;
+                }
+                else
+                {
+                    VerificaEmail = false;
+                }
 
                 if (VerificaSenha == true && VerificaEmail == true)
-                {   
+                {
                     tbEmail.Text = "";
                     tbSenhaDigitada.Text = "";
+
+
+                    this.Hide();
+                    ContaLogado FormLogado = new ContaLogado();
                     FormLogado.Show();
                     break;
                 }
                 else
                 {
-                    MessageBox.Show("Senha ou email Inválido!");
+                    MessageBox.Show("Senha ou email inválidos!");
                     tbEmail.Text = "";
                     tbSenhaDigitada.Text = "";
+                    ContaLogado FormLogado = new ContaLogado();
+                    FormLogado.Hide();
                     break;
                 }
 
-
-
-
-
+             
             }
 
             
+        }
 
+        private void btVoltarPrincipal_Click(object sender, EventArgs e)
+        {
+            Principal FormPrincipal = new Principal();
+            FormPrincipal.Show();
+            this.Hide();
+        }
 
-
+        private void btEncerrar_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
